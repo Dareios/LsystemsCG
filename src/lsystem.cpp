@@ -11,16 +11,20 @@ std::string LindenmayerSystemDeterministic::expandSymbol(unsigned char const& sy
 		TODO 1.1
 		For a given symbol in the sequence, what should it be replaced with after expansion?
 	*/
-	
+
 	std::unordered_map<int, char> search = { {1,sym} };
-	auto key = search.find('X');
+	auto keyX = search.find('X');
+	auto keyF = search.find('F');
 	std::string newSym;
 
-	if (key != search.end) {
+	if (keyX != search.end) {
 		newSym = "F[+X]F[-X]+X";
 	}
-	else {
+	else if (keyF != search.end) {
 		newSym = "FF";
+	}
+	else {
+		newSym = sym;
 	}
 
 	//return {char(sym)}; // this constructs string from char
