@@ -62,9 +62,14 @@ std::string LindenmayerSystem::expand(std::string const& initial, uint32_t num_i
 		Perform `num_iters` iterations of grammar expansion (use expandOnce)
 	*/
 
-	
+	std::string expandable = initial;
 
-	return "";
+	for (int i = 0; i < num_iters; i++)
+	{
+		expandable = expandOnce(expandable);
+	}
+
+	return expandable;
 	
 	//============================================================
 }
